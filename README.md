@@ -1,10 +1,20 @@
 # PySnips
 
-[![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
+[![PyPI Version](https://img.shields.io/pypi/v/pysnips.svg)](https://pypi.org/project/pysnips/)
+[![Python Version](https://img.shields.io/pypi/pyversions/pysnips.svg)](https://pypi.org/project/pysnips/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 **PySnips** is a high-performance, production-quality CLI tool designed to accelerate Python development. It provides a library of **50+ expertly crafted code templates** spanning from core language syntax to advanced Machine Learning and AI Full-Stack architectures.
+
+---
+
+## Project Information
+
+- **Author**: DevTools Engineer
+- **GitHub**: [anusha-b2803/pysnips](https://github.com/anusha-b2803/pysnips)
+- **PyPI**: [pypi.org/project/pysnips](https://pypi.org/project/pysnips/)
+- **Bug Tracker**: [GitHub Issues](https://github.com/anusha-b2803/pysnips/issues)
 
 ---
 
@@ -25,14 +35,13 @@ The easiest way to install PySnips is via **pip**:
 ```bash
 pip install pysnips
 ```
-
 ### Install from Source
 
 For development or local modifications:
 
 ```bash
-git clone https://github.com/yourusername/pysnips.git
-cd py-pkg
+git clone https://github.com/anusha-b2803/pysnips.git
+cd pysnips
 pip install -e .
 ```
 
@@ -74,6 +83,26 @@ pysnips random-forest --n_estimators 200 > train.py
 | **ML PIPELINE** | Data engineering & preprocessing | `scaler`, `train-test`, `pipeline` |
 | **AI FULL-STACK** | FastAPI, DB connections & Logging | `fastapi-app`, `db-connect`, `ml-api` |
 
+<details>
+<summary><b>Click to see all 50+ templates</b></summary>
+
+### BASIC
+- `for`, `while`, `if`, `ifelse`, `elif`, `try`, `tryfull`, `func`, `rfunc`, `listcomp`, `dictcomp`, `setcomp`, `lambda`, `maincheck`, `printfmt`
+
+### MACHINE LEARNING
+- `linear-reg`, `logistic-reg`, `knn`, `svm`, `decision-tree`, `random-forest`, `naive-bayes`, `kmeans`, `pca`, `model-eval`
+
+### DEEP LEARNING
+- `nn-basic`, `nn-compile`, `nn-train`, `cnn-basic`, `cnn-image`, `rnn-basic`, `lstm`, `dropout`, `predict`, `save-load-dl`
+
+### ML PIPELINE
+- `data-load`, `data-clean`, `train-test`, `scaler`, `pipeline`
+
+### AI FULL-STACK
+- `fastapi-app`, `route-get`, `route-post`, `ml-api`, `file-upload`, `json-response`, `async-api`, `db-connect`, `save-predict`, `logger`
+
+</details>
+
 ---
 
 ## Project Architecture
@@ -84,21 +113,6 @@ PySnips is built with scalability in mind:
 - `pysnips/registry.py`: Centralized template management system.
 - `pysnips/generator.py`: Regex-powered dynamic template engine.
 - `pysnips/utils/`: Enhanced console formatting and color support.
-
----
-
-## Deployment
-
-To package and distribute PySnips:
-
-1. **Build Distribution**:
-   ```bash
-   python -m build
-   ```
-2. **Upload to PyPI**:
-   ```bash
-   python -m twine upload dist/*
-   ```
 
 ---
 
