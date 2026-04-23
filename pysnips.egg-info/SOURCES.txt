@@ -5,12 +5,16 @@ pysnips/__init__.py
 pysnips/__main__.py
 pysnips/cli.py
 pysnips/generator.py
+pysnips/ipython_ext.py
 pysnips/registry.py
 pysnips.egg-info/PKG-INFO
 pysnips.egg-info/SOURCES.txt
 pysnips.egg-info/dependency_links.txt
 pysnips.egg-info/entry_points.txt
+pysnips.egg-info/requires.txt
 pysnips.egg-info/top_level.txt
 pysnips/templates/__init__.py
 pysnips/utils/__init__.py
 pysnips/utils/console.py
+pysnips/utils/env.py
+pysnips/utils/export.py

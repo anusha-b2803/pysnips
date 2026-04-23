@@ -22,9 +22,10 @@
 
 - **50+ Specialized Templates**: Instantly generate boilerplate for Basic Python, ML, Deep Learning, and FastAPI.
 - **Dynamic Injection**: Fully customizable snippets using CLI flags (e.g., `--name MyModel --lr 0.01`).
-- **Zero Dependencies**: Built entirely on the Python Standard Library for maximum compatibility and minimal footprint.
+- **IDE Integration**: Install snippets natively into VS Code for "type and enter" expansion.
+- **Jupyter Magic**: Type keywords in notebooks and expand them instantly with `%load_ext pysnips`.
+- **Zero Dependencies**: Core CLI is built entirely on the Python Standard Library.
 - **Clean Architecture**: Engineered with a modular registry system, making it easy to extend and maintain.
-- **Developer First**: Outputs clean, PEP-8 compliant code directly to your terminal or into a file.
 
 ---
 
@@ -35,40 +36,45 @@ The easiest way to install PySnips is via **pip**:
 ```bash
 pip install pysnips
 ```
-### Install from Source
 
-For development or local modifications:
-
+To enable Jupyter Notebook support:
 ```bash
-git clone https://github.com/anusha-b2803/pysnips.git
-cd pysnips
-pip install -e .
+pip install "pysnips[notebook]"
 ```
 
 ---
 
-## Quick Start
+## 🚀 Usage & Integration
 
-### 1. Explore Available Snippets
-List all 50+ available commands categorized by domain:
+### 1. VS Code Integration (Native Snippets)
+Install all templates into VS Code to enable "type and enter" expansion:
+```bash
+pysnips install --vscode
+```
+**Example**: In any `.py` file, type `linear-reg` and press **Enter** to expand the full template.
+
+### 2. Jupyter & Notebook Magic
+Enable auto-expansion in your Jupyter cells:
+```python
+%load_ext pysnips
+
+# Type the keyword and run the cell to expand!
+linear-reg
+```
+
+### 3. CLI Command Line
+Explore and generate snippets directly:
 ```bash
 pysnips list
+pysnips for --item i --iterable "range(10)"
 ```
 
-### 2. Generate a Python Function
-```bash
-pysnips func --name calculate_metrics --args "data, threshold"
-```
-
-### 3. Scaffold a FastAPI Application
-Generate a complete API boilerplate and save it directly to a file:
-```bash
-pysnips fastapi-app --title "Predictive Analytics API" > main.py
-```
-
-### 4. Build a Machine Learning Pipeline
-```bash
-pysnips random-forest --n_estimators 200 > train.py
+### 4. Python Library API
+Use `pysnips` in your own scripts:
+```python
+import pysnips
+snippet = pysnips.get("for", item="idx")
+snippet.show() # Renders beautifully in Notebooks
 ```
 
 ---
@@ -102,17 +108,6 @@ pysnips random-forest --n_estimators 200 > train.py
 - `fastapi-app`, `route-get`, `route-post`, `ml-api`, `file-upload`, `json-response`, `async-api`, `db-connect`, `save-predict`, `logger`
 
 </details>
-
----
-
-## Project Architecture
-
-PySnips is built with scalability in mind:
-
-- `pysnips/cli.py`: Advanced argument parsing and UI handling.
-- `pysnips/registry.py`: Centralized template management system.
-- `pysnips/generator.py`: Regex-powered dynamic template engine.
-- `pysnips/utils/`: Enhanced console formatting and color support.
 
 ---
 

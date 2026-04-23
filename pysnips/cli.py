@@ -5,6 +5,8 @@ import sys
 from .registry import SNIPPETS
 from .generator import TemplateEngine
 from .utils.console import Console
+from .utils.export import install_vscode, to_vscode_snippets
+import json
 
 def parse_placeholders(unknown_args):
     """
@@ -42,7 +44,29 @@ def run_list():
         for cmd, desc in sorted(items):
             Console.print_item(cmd, desc)
     
-    print(f"\nUsage: pysnips <command> [--placeholder value]")
+    print(f"\nUsage:")
+    print(f"  pysnips <command> [--placeholder value]")
+    print(f"  pysnips install --vscode")
+    print(f"  pysnips export --vscode")
+
+def run_install(args):
+    if args.vscode:
+        Console.print_msg("Installing snippets for VS Code...", Console.BLUE)
+        success, msg = install_vscode()
+        if success:
+            Console.print_msg(f"Success! Snippets installed at: {msg}", Console.GREEN)
+            Console.print_msg("Restart VS Code or use 'Developer: Reload Window' to activate.", Console.YELLOW)
+        else:
+            Console.print_msg(f"Error: {msg}", Console.RED)
+    else:
+        Console.print_msg("Error: Specify an editor to install (e.g., --vscode)", Console.RED)
+
+def run_export(args):
+    if args.vscode:
+        snippets = to_vscode_snippets()
+        print(json.dumps(snippets, indent=4))
+    else:
+        Console.print_msg("Error: Specify a format to export (e.g., --vscode)", Console.RED)
 
 def main():
     parser = argparse.ArgumentParser(
@@ -50,20 +74,27 @@ def main():
         description="Production-quality code templates for Python developers.",
         add_help=False
     )
-    parser.add_argument("command", nargs="?", help="The snippet command to run (or 'list')")
+    parser.add_argument("command", nargs="?", help="The snippet command to run (or 'list', 'install', 'export')")
     parser.add_argument("-h", "--help", action="store_true", help="Show help message")
+    parser.add_argument("--vscode", action="store_true", help="Target VS Code")
 
     args, unknown = parser.parse_known_args()
 
     if args.help:
         parser.print_help()
         print("\nCommands:")
-        print("  list \t Show all 50 commands")
-        print("  <cmd> \t Print snippet for specific command")
+        print("  list \t\t Show all 50 commands")
+        print("  install --vscode \t Install snippets into VS Code")
+        print("  export --vscode \t Print snippets in VS Code format")
+        print("  <cmd> \t\t Print snippet for specific command")
         sys.exit(0)
 
     if not args.command or args.command == "list":
         run_list()
+    elif args.command == "install":
+        run_install(args)
+    elif args.command == "export":
+        run_export(args)
     elif args.command in SNIPPETS:
         placeholders = parse_placeholders(unknown)
         try:

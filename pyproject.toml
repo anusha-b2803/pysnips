@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pysnips"
-version = "0.1.3"
+version = "0.1.4"
 authors = [
   { name="DevTools Engineer", email="engineer@example.com" },
 ]
@@ -24,6 +24,9 @@ keywords = ["cli", "templates", "snippets", "python", "machine-learning", "fasta
 
 [project.scripts]
 pysnips = "pysnips.cli:main"
+
+[project.optional-dependencies]
+notebook = ["ipython"]
 
 [tool.setuptools.packages.find]
 where = ["."]
