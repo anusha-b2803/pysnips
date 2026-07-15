@@ -11,7 +11,7 @@
 
 ## Project Information
 
-- **Author**: DevTools Engineer
+- **Author**: Anusha B
 - **GitHub**: [anusha-b2803/pysnips](https://github.com/anusha-b2803/pysnips)
 - **PyPI**: [pypi.org/project/pysnips](https://pypi.org/project/pysnips/)
 - **Bug Tracker**: [GitHub Issues](https://github.com/anusha-b2803/pysnips/issues)
